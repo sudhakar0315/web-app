@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>register</title>
+   <link rel="icon" href="images/st marys grp.png" type="image">
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+   <script src='https://www.google.com/recaptcha/api.js'></script>
+   <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+
+
+</head>
+<body>
+<nav>
+        <div class="nav-bar">
+            <i class='bx bx-menu sidebarOpen' ></i>
+           <img src="images/logo (1).png" alt="">
+
+            <div class="menu">
+                <div class="logo-toggle">
+                    <span class="logo"><a href="#"></a></span>
+                    <i class='bx bx-x siderbarClose'></i>
+                </div>
+
+                <ul class="nav-links">
+                  <div class="darkLight-searchBox">
+                    <div class="dark-light">
+                        <i class='bx bx-moon moon'></i>
+                        <i class='bx bx-sun sun'></i>
+                    </div>
+    
+                       <div class="searchToggle">
+                       </div>
+    
+                        
+                        </div>
+                    <li class="item"><a href="index.php">Home</a></li>
+        <li class="item"><a href="#about">About</a></li>
+        <li class="item"><a href="#placements">Placements</a></li>
+        <li class="item"><a href="#facilities">Facilities</a></li>
+        <li class="item"><a href="#courses">Course</a></li>
+        <li class="item"><a href="contact/contact.html">Contact</a></li>
+        <li class="item"><a href="contact/register.html">Registration</a></li>
+            
+                </div>
+            </div>
+        </div>
+
+    </div>
+</ul>
+
+    </nav>
+<div class="form-container">
+   <form action="" method="post" enctype="multipart/form-data">
+      <h3>Register Now</h3>
+      <input type="text" name="name" placeholder="Enter username" class="box" required>
+      <input type="email" name="email" placeholder="Enter email" class="box" required>
+      <input type="text" name="hallticket" placeholder="Enter hallticket" class="box" required>
+      
+      <!-- Select element for "course" with predefined options -->
+<select name="course" class="box" required>
+   <option value="">--COURSE--</option>
+   <option value="AIML">AIML</option>
+   <option value="CSE">CSE</option>
+   <option value="DS">DS</option>
+   <option value="CYBER SECURITY">CYBER SECURITY</option>
+   <option value="DEPLOMA">DEPLOMA</option>
+</select>
+
+<!-- Select element for "section" with predefined options -->
+<select name="section" class="box" required>
+   <option value="">--SECTION--</option>
+   <option value="A">A</option>
+   <option value="B">B</option>
+   <option value="C">C</option>
+</select>
+
+      
+      <input type="password" name="password" placeholder="Enter password" class="box" required>
+      <input type="password" name="cpassword" placeholder="Confirm password" class="box" required>
+      <input type="file" name="image" class="box" accept="image/jpg, image/jpeg, image/png">
+      <input type="submit" name="submit" value="Register Now" class="btn">
+      <p>Already have an account? <a href="login.php">Login Now</a></p>
+   </form>
+</div>
+<script>
+
+const body = document.querySelector("body"),
+      nav = document.querySelector("nav"),
+      modeToggle = document.querySelector(".dark-light"),
+      searchToggle = document.querySelector(".searchToggle"),
+      sidebarOpen = document.querySelector(".sidebarOpen"),
+      siderbarClose = document.querySelector(".siderbarClose");
+
+      let getMode = localStorage.getItem("mode");
+          if(getMode && getMode === "dark-mode"){
+            body.classList.add("dark");
+          }
+
+// js code to toggle dark and light mode
+      modeToggle.addEventListener("click" , () =>{
+        modeToggle.classList.toggle("active");
+        body.classList.toggle("dark");
+
+        // js code to keep user selected mode even page refresh or file reopen
+        if(!body.classList.contains("dark")){
+            localStorage.setItem("mode" , "light-mode");
+        }else{
+            localStorage.setItem("mode" , "dark-mode");
+        }
+      });
+
+// js code to toggle search box
+        searchToggle.addEventListener("click" , () =>{
+        searchToggle.classList.toggle("active");
+      });
+ 
+      
+//   js code to toggle sidebar
+sidebarOpen.addEventListener("click" , () =>{
+    nav.classList.add("active");
+});
+
+body.addEventListener("click" , e =>{
+    let clickedElm = e.target;
+
+    if(!clickedElm.classList.contains("sidebarOpen") && !clickedElm.classList.contains("menu")){
+        nav.classList.remove("active");
+    }
+});
+
+</script>
+
+</body>
+</html>
